@@ -210,7 +210,8 @@ class DeebotLifeSpanSensorMixin:
 
 @dataclass
 class DeebotLifeSpanSensorEntityDescription(
-    SensorEntityDescription, DeebotLifeSpanSensorMixin  # type: ignore
+    SensorEntityDescription,  # type: ignore
+    DeebotLifeSpanSensorMixin,
 ):
     """Class describing Deebot sensor entity."""
 
@@ -239,6 +240,15 @@ LIFE_SPAN_DESCRIPTIONS: tuple[DeebotLifeSpanSensorEntityDescription, ...] = (
         key="life_span_side_brush",
         translation_key="life_span_side_brush",
         icon="mdi:broom",
+        entity_registry_enabled_default=False,
+        native_unit_of_measurement="%",
+        entity_category=EntityCategory.DIAGNOSTIC,
+    ),
+    DeebotLifeSpanSensorEntityDescription(
+        component=LifeSpan.UNIT_CARE,
+        key="life_span_unit_care",
+        translation_key="life_span_unit_care",
+        icon="mdi:tools",
         entity_registry_enabled_default=False,
         native_unit_of_measurement="%",
         entity_category=EntityCategory.DIAGNOSTIC,

@@ -148,6 +148,9 @@
         "button": {
           "additionalProperties": false,
           "properties": {
+            "clear_map": {
+              "$ref": "#/definitions/translation_name"
+            },
             "life_span_brush_reset": {
               "$ref": "#/definitions/translation_name"
             },
@@ -155,6 +158,9 @@
               "$ref": "#/definitions/translation_name"
             },
             "life_span_side_brush_reset": {
+              "$ref": "#/definitions/translation_name"
+            },
+            "life_span_unit_care_reset": {
               "$ref": "#/definitions/translation_name"
             },
             "relocate": {
@@ -187,6 +193,81 @@
         "select": {
           "additionalProperties": false,
           "properties": {
+            "auto_empty": {
+              "additionalProperties": false,
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "state": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "mode_10": {
+                      "type": "string"
+                    },
+                    "mode_15": {
+                      "type": "string"
+                    },
+                    "mode_25": {
+                      "type": "string"
+                    },
+                    "mode_auto": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "efficiency_mode": {
+              "additionalProperties": false,
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "state": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "energy_efficient_mode": {
+                      "type": "string"
+                    },
+                    "standart_mode": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "fan_speed": {
+              "additionalProperties": false,
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "state": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "max": {
+                      "type": "string"
+                    },
+                    "max_plus": {
+                      "type": "string"
+                    },
+                    "normal": {
+                      "type": "string"
+                    },
+                    "quiet": {
+                      "type": "string"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
             "water_amount": {
               "additionalProperties": false,
               "properties": {
@@ -265,6 +346,9 @@
             "life_span_side_brush": {
               "$ref": "#/definitions/translation_name"
             },
+            "life_span_unit_care": {
+              "$ref": "#/definitions/translation_name"
+            },
             "stats_area": {
               "$ref": "#/definitions/translation_name"
             },
@@ -301,6 +385,9 @@
             "advanced_mode": {
               "$ref": "#/definitions/translation_name"
             },
+            "auto_empty": {
+              "$ref": "#/definitions/translation_name"
+            },
             "carpet_auto_fan_speed_boost": {
               "$ref": "#/definitions/translation_name"
             },
@@ -310,7 +397,13 @@
             "continuous_cleaning": {
               "$ref": "#/definitions/translation_name"
             },
+            "ota": {
+              "$ref": "#/definitions/translation_name"
+            },
             "true_detect": {
+              "$ref": "#/definitions/translation_name"
+            },
+            "voice_assistant": {
               "$ref": "#/definitions/translation_name"
             }
           },

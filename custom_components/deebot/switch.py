@@ -33,6 +33,14 @@ ENTITY_DESCRIPTIONS: tuple[DeebotSwitchEntityDescription, ...] = (
         icon="mdi:tune",
     ),
     DeebotSwitchEntityDescription(
+        capability_fn=lambda c: c.clean.auto_empty if c.clean.auto_empty else None,
+        key="auto_empty_enable",
+        translation_key="auto_empty",
+        entity_registry_enabled_default=False,
+        entity_category=EntityCategory.CONFIG,
+        icon="mdi:delete-empty",
+    ),
+    DeebotSwitchEntityDescription(
         capability_fn=lambda c: c.clean.continuous,
         key="continuous_cleaning",
         translation_key="continuous_cleaning",
@@ -57,12 +65,28 @@ ENTITY_DESCRIPTIONS: tuple[DeebotSwitchEntityDescription, ...] = (
         icon="mdi:broom",
     ),
     DeebotSwitchEntityDescription(
+        capability_fn=lambda c: c.settings.ota,
+        key="ota",
+        translation_key="ota",
+        entity_registry_enabled_default=False,
+        entity_category=EntityCategory.CONFIG,
+        icon="mdi:cloud-sync",
+    ),
+    DeebotSwitchEntityDescription(
         capability_fn=lambda c: c.settings.true_detect,
         key="true_detect",
         translation_key="true_detect",
         entity_registry_enabled_default=False,
         entity_category=EntityCategory.CONFIG,
         icon="mdi:laser-pointer",
+    ),
+    DeebotSwitchEntityDescription(
+        capability_fn=lambda c: c.settings.voice_assistant,
+        key="voice_assistant",
+        translation_key="voice_assistant",
+        entity_registry_enabled_default=False,
+        entity_category=EntityCategory.CONFIG,
+        icon="mdi:account-voice",
     ),
 )
 

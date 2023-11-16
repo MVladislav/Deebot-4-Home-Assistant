@@ -46,6 +46,9 @@
       }
     },
     "button": {
+      "clear_map": {
+        "name": "Clear map"
+      },
       "life_span_brush_reset": {
         "name": "Reset brush"
       },
@@ -54,6 +57,9 @@
       },
       "life_span_side_brush_reset": {
         "name": "Reset side brush"
+      },
+      "life_span_unit_care_reset": {
+        "name": "Reset components maintenance"
       },
       "relocate": {
         "name": "Relocate"
@@ -73,6 +79,31 @@
       }
     },
     "select": {
+      "auto_empty": {
+        "name": "Auto Empty",
+        "state": {
+          "mode_10": "10min",
+          "mode_15": "15min",
+          "mode_25": "25min",
+          "mode_auto": "auto"
+        }
+      },
+      "efficiency_mode": {
+        "name": "Power settings",
+        "state": {
+          "energy_efficient_mode": "Energy-efficient mode",
+          "standart_mode": "Standard mode"
+        }
+      },
+      "fan_speed": {
+        "name": "Suction power",
+        "state": {
+          "max": "Strong",
+          "max_plus": "Max+",
+          "normal": "Standard",
+          "quiet": "Quiet"
+        }
+      },
       "water_amount": {
         "name": "Water amount",
         "state": {
@@ -111,6 +142,9 @@
       "life_span_side_brush": {
         "name": "Side brush"
       },
+      "life_span_unit_care": {
+        "name": "Components maintenance"
+      },
       "stats_area": {
         "name": "Stats area"
       },
@@ -143,6 +177,9 @@
       "advanced_mode": {
         "name": "Advanced mode"
       },
+      "auto_empty": {
+        "name": "Auto Empty"
+      },
       "carpet_auto_fan_speed_boost": {
         "name": "Carpet auto fan speed boost"
       },
@@ -152,8 +189,14 @@
       "continuous_cleaning": {
         "name": "Continuous cleaning"
       },
+      "ota": {
+        "name": "OTA"
+      },
       "true_detect": {
         "name": "True detect"
+      },
+      "voice_assistant": {
+        "name": "Voice assistant"
       }
     },
     "vacuum": {

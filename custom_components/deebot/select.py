@@ -35,6 +35,38 @@ class DeebotSelectEntityDescription(
 
 ENTITY_DESCRIPTIONS: tuple[DeebotSelectEntityDescription, ...] = (
     DeebotSelectEntityDescription(
+        capability_fn=lambda caps: caps.clean.auto_empty
+        if caps.clean.auto_empty
+        else None,
+        current_option_fn=lambda e: e.mode.display_name,
+        options_fn=lambda aut: [mode.display_name for mode in aut.types],
+        key="auto_empty",
+        translation_key="auto_empty",
+        entity_registry_enabled_default=False,
+        icon="mdi:delete-empty",
+        entity_category=EntityCategory.CONFIG,
+    ),
+    DeebotSelectEntityDescription(
+        capability_fn=lambda caps: caps.settings.efficiency_mode,
+        current_option_fn=lambda e: e.efficiency.display_name,
+        options_fn=lambda eff: [mode.display_name for mode in eff.types],
+        key="efficiency_mode",
+        translation_key="efficiency_mode",
+        entity_registry_enabled_default=False,
+        icon="mdi:lightning-bolt",
+        entity_category=EntityCategory.CONFIG,
+    ),
+    DeebotSelectEntityDescription(
+        capability_fn=lambda caps: caps.fan_speed,
+        current_option_fn=lambda e: e.speed.display_name,
+        options_fn=lambda speed: [mode.display_name for mode in speed.types],
+        key="fan_speed",
+        translation_key="fan_speed",
+        entity_registry_enabled_default=False,
+        icon="mdi:fan-chevron-up",
+        entity_category=EntityCategory.CONFIG,
+    ),
+    DeebotSelectEntityDescription(
         capability_fn=lambda caps: caps.water,
         current_option_fn=lambda e: e.amount.display_name,
         options_fn=lambda water: [amount.display_name for amount in water.types],

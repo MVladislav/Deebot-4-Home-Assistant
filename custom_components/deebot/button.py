@@ -1,6 +1,7 @@
 """Binary sensor module."""
 from collections.abc import Sequence
 from dataclasses import dataclass
+from typing import Any
 
 from deebot_client.capabilities import CapabilityExecute
 from deebot_client.device import Device
@@ -33,6 +34,14 @@ ENTITY_DESCRIPTIONS: tuple[DeebotButtonEntityDescription, ...] = (
         entity_registry_enabled_default=True,  # Can be enabled as they don't poll data
         entity_category=EntityCategory.DIAGNOSTIC,
     ),
+    DeebotButtonEntityDescription(
+        capability_fn=lambda caps: caps.map.clear_map if caps.map else None,
+        key="clear_map",
+        translation_key="clear_map",
+        icon="mdi:selection-remove",
+        entity_registry_enabled_default=True,  # Can be enabled as they don't poll data
+        entity_category=EntityCategory.CONFIG,
+    ),
 )
 
 
@@ -61,17 +70,22 @@ async def async_setup_entry(
 
 
 class DeebotResetLifeSpanButtonEntity(
-    DeebotEntity[None, ButtonEntityDescription],
+    DeebotEntity[Any, ButtonEntityDescription],
     ButtonEntity,  # type: ignore
 ):
     """Deebot reset life span button entity."""
 
     def __init__(self, device: Device, component: LifeSpan):
         key = f"life_span_{component.name.lower()}_reset"
+        icon = "mdi:broom"
+        if component == LifeSpan.FILTER:
+            icon = "mdi:air-filter"
+        elif component == LifeSpan.UNIT_CARE:
+            icon = "mdi:tools"
         entity_description = ButtonEntityDescription(
             key=key,
             translation_key=key,
-            icon="mdi:air-filter" if component == LifeSpan.FILTER else "mdi:broom",
+            icon=icon,
             entity_registry_enabled_default=True,  # Can be enabled as they don't poll data
             entity_category=EntityCategory.CONFIG,
         )
