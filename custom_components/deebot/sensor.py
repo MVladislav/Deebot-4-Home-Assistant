@@ -1,6 +1,7 @@
 """Sensor module."""
 from collections.abc import Callable, MutableMapping, Sequence
 from dataclasses import dataclass
+from datetime import datetime
 from math import floor
 from typing import Any, Generic, TypeVar
 
@@ -73,7 +74,9 @@ def _clean_log_event_attributes(event: CleanLogEvent) -> MutableMapping[str, Any
     if event.logs:
         log = event.logs[0]
         return {
-            "timestamp": log.timestamp,
+            "timestamp": datetime.utcfromtimestamp(log.timestamp).strftime(
+                "%Y-%m-%d %H:%M:%S UTC"
+            ),
             "image_url": log.image_url,
             "type": log.type,
             "area": log.area,
