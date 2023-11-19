@@ -74,7 +74,7 @@ def _clean_log_event_attributes(event: CleanLogEvent) -> MutableMapping[str, Any
     if event.logs:
         log = event.logs[0]
         return {
-            "timestamp": datetime.utcfromtimestamp(log.timestamp).strftime(
+            "timestamp": datetime.utcfromtimestamp(int(log.timestamp)).strftime(
                 "%Y-%m-%d %H:%M:%S UTC"
             ),
             "image_url": log.image_url,
