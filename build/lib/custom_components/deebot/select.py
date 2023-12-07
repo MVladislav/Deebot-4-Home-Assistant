@@ -3,7 +3,7 @@ from collections.abc import Callable
 from dataclasses import dataclass
 from typing import Any, Generic
 
-from deebot_client.capabilities import CapabilityCleanAutoEmpty, CapabilitySetTypes
+from deebot_client.capabilities import CapabilitySetTypes
 from deebot_client.device import Device
 from homeassistant.components.select import SelectEntity, SelectEntityDescription
 from homeassistant.config_entries import ConfigEntry
@@ -25,7 +25,7 @@ class DeebotSelectEntityDescription(
     """Deebot select entity description."""
 
     current_option_fn: Callable[[EventT], str | None]
-    options_fn: Callable[[CapabilitySetTypes | CapabilityCleanAutoEmpty], list[str]]
+    options_fn: Callable[[CapabilitySetTypes], list[str]]
 
 
 ENTITY_DESCRIPTIONS: tuple[DeebotSelectEntityDescription, ...] = (
@@ -103,7 +103,7 @@ async def async_setup_entry(
 
 
 class DeebotSelectEntity(
-    DeebotEntity[CapabilitySetTypes[EventT, str], DeebotSelectEntityDescription],
+    DeebotEntity[CapabilitySetTypes[EventT, str, str], DeebotSelectEntityDescription],
     SelectEntity,  # type: ignore
 ):
     """Deebot select entity."""
@@ -113,7 +113,7 @@ class DeebotSelectEntity(
     def __init__(
         self,
         device: Device,
-        capability: CapabilitySetTypes[EventT, str],
+        capability: CapabilitySetTypes[EventT, str, str],
         entity_description: DeebotSelectEntityDescription | None = None,
         **kwargs: Any,
     ):
@@ -138,7 +138,9 @@ class DeebotSelectEntity(
 
 
 class DeebotSelectEnableEntity(
-    DeebotEntity[CapabilityCleanAutoEmpty, DeebotSelectEntityDescription],
+    DeebotEntity[
+        CapabilitySetTypes[EventT, bool, str, str], DeebotSelectEntityDescription
+    ],
     SelectEntity,  # type: ignore
 ):
     """Deebot select entity."""
@@ -148,7 +150,7 @@ class DeebotSelectEnableEntity(
     def __init__(
         self,
         device: Device,
-        capability: CapabilityCleanAutoEmpty,
+        capability: CapabilitySetTypes[EventT, bool, str, str],
         entity_description: DeebotSelectEntityDescription | None = None,
         **kwargs: Any,
     ):
