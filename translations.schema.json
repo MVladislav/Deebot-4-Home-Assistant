@@ -472,6 +472,57 @@
       },
       "type": "object"
     },
+    "issues": {
+      "additionalProperties": false,
+      "properties": {
+        "deprecated_integration_issue": {
+          "additionalProperties": false,
+          "properties": {
+            "description": {
+              "type": "string"
+            },
+            "title": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        },
+        "deprecated_service_refresh": {
+          "additionalProperties": false,
+          "properties": {
+            "fix_flow": {
+              "additionalProperties": false,
+              "properties": {
+                "step": {
+                  "additionalProperties": false,
+                  "properties": {
+                    "confirm": {
+                      "additionalProperties": false,
+                      "properties": {
+                        "description": {
+                          "type": "string"
+                        },
+                        "title": {
+                          "type": "string"
+                        }
+                      },
+                      "type": "object"
+                    }
+                  },
+                  "type": "object"
+                }
+              },
+              "type": "object"
+            },
+            "title": {
+              "type": "string"
+            }
+          },
+          "type": "object"
+        }
+      },
+      "type": "object"
+    },
     "options": {
       "additionalProperties": false,
       "properties": {
